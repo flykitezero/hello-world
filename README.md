@@ -12,6 +12,12 @@ Saving checkpoint: saved/models/NSRR-Pytorch/1113_011125/checkpoint-epoch400.pth
 ```python
 checkpoint = torch.load('./saved/models/NSRR-Pytorch/1113_011125/checkpoint-epoch400.pth')
 ```
+修改测试图片输出文件夹，修改对应位置的代码：
+```python
+# 保存图片
+vutils.save_image(output[0], './output_test_720/output_{}_{}.png'.format(i,curr_ssim))
+vutils.save_image(img_view[:,:,0,:,:][0], './output_test_720/input_{}.png'.format(i))
+```
 之后就可以进行测试，输入如下命令：
 ```python
 python test.py -c config_test_720.json
